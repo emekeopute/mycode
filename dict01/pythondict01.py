@@ -41,4 +41,19 @@ switch["password"] = "qwerty"
 print( switch.keys() )
 print( switch.values() )
 
+# creates new dictionaries
 
+easy= ["science", "turbo", ["goggles", "eyes"], "nothing"]
+
+
+medium= ["science", "turbo", {"eyes": "goggles", "goggles": "eyes"}, "nothing"]
+
+
+hard= [{"slappy": "a", "text": "b", "kumquat": "goggles", "user":{"awesome": "c", "name": {"first": "eyes", "last": "toes"}},"banana": 15, "d": "nothing"}]
+
+
+# easy elements
+print(easy[2][1], easy[2][0], easy[3])
+
+# medium elements
+print(medium[2]{)
