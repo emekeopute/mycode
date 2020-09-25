@@ -31,27 +31,65 @@ rooms = {
 
             'Hall' : {
                   'south' : 'Kitchen',
-                  'east'  : 'Dining Room',
-                  'item'  : 'key',
+                   'east' : 'Dining Room',
+                   'item' : 'key'
                 },
 
-            'Kitchen' : {
+         'Kitchen' : {
                   'north' : 'Hall',
                   'east'  : 'Laundry Room'
                 },
 
-            'Dining Room' : {
+     'Dining Room' : {
                    'west' : 'Hall',
                    'south': 'Laundry Room'
                 },
 
-           'Laundry Room' : {
+    'Laundry Room' : {
                    'west' : 'Kitchen',
                    'east' : 'Playing Room'
                 },
 
-          'Playing Room' : {
-                   'west' : 'Laundry Room'
+    'Playing Room' : {
+                   'west' : 'Laundry Room',
+		   'east' : 'Laundry Room'
+                },
+                
+      'Booze Room' : {
+                   'west' : 'Playing Room',
+		  'north' : 'Praying Room',
+		   'south': 'Secrets Room'
+                },
+
+    'Praying Room' : {
+                   'east' : 'Price Room'
+                },
+
+      'Price Room' : {
+                  'south' : 'Underground Room'
+                },
+
+    'Secrets Room' : {
+                   'west' : 'Bath Room'
+                },
+             	
+       'Bath Room' : {
+                   'west' : 'Family Room',
+                   'east' : 'Secrets Room',
+                  'north' : 'Playing Room',
+                  'south' : 'Guest Room'
+                },
+
+     'Family Room' : {
+                   'east' : 'Bathroom Room'
+                },
+
+      'Guest Room' : {
+                  'north' : 'Praying Room'
+                },
+
+'Underground Room' : {
+                   'west' : 'Praying Room'
                 }
          }
 
