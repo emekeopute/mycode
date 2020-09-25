@@ -1,25 +1,37 @@
 #!/usr/bin/env python3
+
 """Amazon || Author: Emeke Opute"""
 
-user_operation = input("Please enter 1 for add, enter 2 for subtract, 3 for divide, 4 for multiply: ")
+def calc():
+    user_operation = input("Please enter: + for add, - for subtract, / for divide, * for multiply: ")
+    add_inputs = []
+    _sum = []
 
-if int(user_operation) == 1
-    my_add_list = []
-    num = input("Please enter the first number you want to add: ")
-        try:
-            float(num1)
-        except ValueError:
-            print "Not a valid number, please enter an integer or a decimal"
-        my_add_list.append(num)
+    def add():
+        user_input = input("Please type a number and press enter: ")
+        while user_input:
+            try:
+                float(user_input)
+                add_inputs.append(float(user_input))
+                print(add_inputs)
+                x = input("Would you like to add another number? Y/N :")
+                if x.lower() == "y":
+                    add()
+                elif x.lower() == "n":
+                    _sum.append(sum(add_inputs))
+                else:
+                    user_input = x
+            except :
+                input(" Please enter a valid number")
+                add()
 
-    """    
-    num2 = input("Please enter the first number you want to add: ")
-        try:
-            float(num1)
-        except ValueError:
-            print "Not a valid number, please enter an integer or a decimal"
-    """
-    Sum = sum(my_add_list)
-    print(f"Sum: {Sum}")
-    
+    if user_operation == "+":
+        add()
+        print("Answer: " + sum(add_inputs))
 
+calc()
+
+# else:
+#                     x = input("please enter q to exit calculator")
+#                     if x == "q":
+#                         exit()
