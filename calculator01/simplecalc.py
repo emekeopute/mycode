@@ -18,20 +18,17 @@ def calc():
                 if x.lower() == "y":
                     add()
                 elif x.lower() == "n":
-                    _sum.append(sum(add_inputs))
+                    break
                 else:
-                    user_input = x
+                    print("You entered an invalid input")
+                    add()
             except :
                 input(" Please enter a valid number")
                 add()
+        _sum.append(sum(add_inputs))
 
     if user_operation == "+":
         add()
-        print("Answer: " + sum(add_inputs))
+        print(f"Answer: {sum(_sum)}")
 
 calc()
-
-# else:
-#                     x = input("please enter q to exit calculator")
-#                     if x == "q":
-#                         exit()
