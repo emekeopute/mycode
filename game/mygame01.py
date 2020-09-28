@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""
 
+Author: Emeke Opute
+Sep 2020
+"""
 # Replace RPG starter project with this code when new instructions are live
 
 def showInstructions():
@@ -10,6 +14,9 @@ RPG Game
 Commands:
   go [direction]
   get [item]
+
+How to win Game:
+  Get to the Garden with a key and a potion to win! Avoid the monsters!
 ''')
 
 def showStatus():
@@ -29,68 +36,71 @@ inventory = []
 #a dictionary linking a room to other rooms
 rooms = {
 
-            'Hall' : {
+                   'Hall' : { 
                   'south' : 'Kitchen',
                    'east' : 'Dining Room',
                    'item' : 'key'
                 },
 
-         'Kitchen' : {
+                ß'Kitchen' : {
                   'north' : 'Hall',
-                  'east'  : 'Laundry Room'
+                   'east' : 'Garden',
+                   'item' : 'monster'
                 },
 
-     'Dining Room' : {
-                   'west' : 'Hall',
-                   'south': 'Laundry Room'
-                },
-
-    'Laundry Room' : {
+                 'Garden' : {
+                  'north' : 'Dining Room',
                    'west' : 'Kitchen',
-                   'east' : 'Playing Room'
+                   'east' : 'Death Trap',
+                  'south' : 'Family Room',
+                   'item' : 'potion'
                 },
 
-    'Playing Room' : {
-                   'west' : 'Laundry Room',
-		   'east' : 'Laundry Room'
-                },
-                
-      'Booze Room' : {
-                   'west' : 'Playing Room',
-		  'north' : 'Praying Room',
-		   'south': 'Secrets Room'
+            'Dining Room' : {
+                   'west' : 'Hall',
+                  'south' : 'Garden'
                 },
 
-    'Praying Room' : {
-                   'east' : 'Price Room'
+             'Death Trap' : {
+                   'west' : 'Garden',
+			       'east' : 'Booze',
+                   'item' : 'explosives'
                 },
 
-      'Price Room' : {
-                  'south' : 'Underground Room'
+                  'Booze' : {
+                   'west' : 'Death Trap',
+                  'north' : 'Rewards',
+                  'south' : 'Secrets',
+                   'item' : 'booze'
                 },
 
-    'Secrets Room' : {
-                   'west' : 'Bath Room'
+                'Rewards' : {
+                   'east' : 'Jackpot',
+                  'south' : 'Booze'
                 },
-             	
-       'Bath Room' : {
+
+                'Jackpot' : {
+                   'west' : 'Rewards',
+                  'south' : 'Underground Room',
+                   'item' : 'potion'
+                },
+
+                'Secrets' : {
                    'west' : 'Family Room',
-                   'east' : 'Secrets Room',
-                  'north' : 'Playing Room',
-                  'south' : 'Guest Room'
+                  'north' : 'Booze'
                 },
 
-     'Family Room' : {
-                   'east' : 'Bathroom Room'
-                },
+            'Family Room' : {
+                  'north' : 'Garden',
+                   'east' : 'Secrets',
+                  'south' : 'Pool'
+            },
 
-      'Guest Room' : {
-                  'north' : 'Praying Room'
-                },
-
-'Underground Room' : {
+       'Underground Room' : {
+                  'north' : 'Family Room',
                    'west' : 'Praying Room'
                 }
+
          }
 
 #start the player in the Hall
@@ -109,7 +119,7 @@ while True:
   #['go','east']
   move = ''
   while move == '':  
-    move = input('>')
+    move = input(' enter a mov >') ## Comment to improve UX
   
   # split allows an items to have a space on them
   # get golden key is returned ["get", "golden key"]          
@@ -140,3 +150,27 @@ while True:
       #tell them they can't get it
       print('Can\'t get ' + move[1] + '!')
 
+    ## Cheat to Player decides to cheat their way to Jackpot
+  if move[0] == 'cheat':
+    currentRoom == 'Jackpot'
+    inventory.append('potion')
+
+    ## If a player enters a room with a monster or with eexplosives
+  if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] or 'explosives' in rooms[currentRoom['item']]: ## Death Trap offers more risk yet quicker path to Rewards
+    if 'monster' in rooms[currentRoom]['item']:
+        print('A monster has got you... GAME OVER!')
+        break
+
+    if 'explosives' in rooms[currentRoom]['item']:
+        print('Explosives!!!! BOOOOM!!!!... GAME OVER!')
+        break
+
+
+## Define how a player can win
+  if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
+    print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
+    break
+## Define how a player can hit JACKPOT
+  if 'potion' in inventory and currentRoom == 'Jackpot': 
+    print('You Wizard... JACKPOT')
+    break
